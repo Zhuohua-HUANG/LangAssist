@@ -8,13 +8,13 @@ from IPython.display import display
 
 pd.set_option("display.max_colwidth", None)
 
-filename = 'data/all_courses_v2.json'
+filename = "data/all_courses_v2.json"
 # Read the JSON data from the file
-with open(filename, 'r') as file:
+with open(filename, "r") as file:
     data = json.load(file)
 
 # Extract the 'text' values into a new list
-docs_processed = [item['text'] for item in data]
+docs_processed = [item["text"] for item in data]
 
 llm = ChatLLM()
 ans = llm.call_llm("This is a test context")
@@ -45,7 +45,9 @@ print(f"Generating {N_GENERATIONS} QA couples...")
 outputs = []
 for sampled_context in tqdm(random.sample(docs_processed, N_GENERATIONS)):
     # Generate QA couple
-    output_QA_couple = llm.call_llm(QA_generation_prompt.format(context=sampled_context))
+    output_QA_couple = llm.call_llm(
+        QA_generation_prompt.format(context=sampled_context)
+    )
     try:
         question = output_QA_couple.split("Factoid question: ")[-1].split("Answer: ")[0]
         answer = output_QA_couple.split("Answer: ")[-1]
@@ -86,7 +88,7 @@ Answer::: """
 
 question_relevance_critique_prompt = """
 You will be given a question.
-Your task is to provide a 'total rating' representing how useful this question can be to machine learning developers building NLP applications with the Hugging Face ecosystem.
+Your task is to provide a 'total rating' representing how useful this question can be to students learning about the information of courses they concern.
 Give your answer on a scale of 1 to 5, where 1 means that the question is not useful at all, and 5 means that the question is extremely useful.
 
 Provide your answer as follows:
@@ -107,9 +109,8 @@ You will be given a question.
 Your task is to provide a 'total rating' representing how context-independant this question is.
 Give your answer on a scale of 1 to 5, where 1 means that the question depends on additional information to be understood, and 5 means that the question makes sense by itself.
 For instance, if the question refers to a particular setting, like 'in the context' or 'in the document', the rating must be 1.
-The questions can contain obscure technical nouns or acronyms like Gradio, Hub, Hugging Face or Space and still be a 5: it must simply be clear to an operator with access to documentation what the question is about.
 
-For instance, "What is the name of the checkpoint from which the ViT model is imported?" should receive a 1, since there is an implicit mention of a context, thus the question is not independant from the context.
+For instance, "How many hours of training are required for the "Career Development for Information Hub Students" course?" should receive a 1, since LLM must get the answer from the context, thus the question is independant from the context.
 
 Provide your answer as follows:
 
@@ -129,7 +130,9 @@ print("Generating critique for each QA couple...")
 for output in tqdm(outputs):
     evaluations = {
         "groundedness": llm.call_llm(
-            question_groundedness_critique_prompt.format(context=output["context"], question=output["question"]),
+            question_groundedness_critique_prompt.format(
+                context=output["context"], question=output["question"]
+            ),
         ),
         "relevance": llm.call_llm(
             question_relevance_critique_prompt.format(question=output["question"]),
@@ -152,7 +155,7 @@ for output in tqdm(outputs):
             )
     except Exception as e:
         continue
-      
+
 
 pd.set_option("display.max_colwidth", None)
 
@@ -170,11 +173,11 @@ display(
         ]
     ]
 )
-generated_questions = generated_questions.loc[
-    (generated_questions["groundedness_score"] >= 4)
-    & (generated_questions["relevance_score"] >= 4)
-    & (generated_questions["standalone_score"] >= 4)
-]
+# generated_questions = generated_questions.loc[
+#     (generated_questions["groundedness_score"] >= 4)
+#     & (generated_questions["relevance_score"] >= 4)
+#     & (generated_questions["standalone_score"] >= 4)
+# ]
 print("============================================")
 print("Final evaluation dataset:")
 display(
@@ -189,5 +192,9 @@ display(
     ]
 )
 
-eval_dataset = datasets.Dataset.from_pandas(generated_questions, split="train", preserve_index=False)
-eval_dataset.to_csv('data/eval_dataset.csv', index=False)
+eval_dataset = datasets.Dataset.from_pandas(
+    generated_questions[["question", "answer"]], preserve_index=False
+)
+
+eval_dataset.to_csv("data/eval_dataset.csv", index=False)
+eval_dataset.to_json("data/eval_dataset.json", index=False)

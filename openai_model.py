@@ -4,7 +4,7 @@ from langchain_core.prompts import ChatPromptTemplate
 
 os.environ["OPENAI_API_BASE"] = "https://cfcus02.opapi.win/v1"
 
-with open('APIKEY', 'r') as file:
+with open("APIKEY", "r") as file:
     openai_api_key = file.read()
 
 
@@ -24,9 +24,7 @@ class ChatLLM:
 
     def get_embeddings(self):
         return self.embeddings
-    
+
     def call_llm(self, prompt: str) -> str:
-        answer = self.llm.invoke(
-            prompt
-        ).content
+        answer = self.llm.invoke(prompt).content
         return answer
