@@ -8,26 +8,13 @@ from IPython.display import display
 
 pd.set_option("display.max_colwidth", None)
 
-# TODO: should be changed to the knowledge base
-ds = datasets.load_dataset("data/all_courses.json", split="train")
+filename = 'data/all_courses_v2.json'
+# Read the JSON data from the file
+with open(filename, 'r') as file:
+    data = json.load(file)
 
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.docstore.document import Document as LangchainDocument
-
-langchain_docs = [LangchainDocument(page_content=doc["text"], metadata={"source": doc["source"]}) for doc in tqdm(ds)]
-
-
-text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=2000,
-    chunk_overlap=200,
-    add_start_index=True,
-    separators=["\n\n", "\n", ".", " ", ""],
-)
-
-docs_processed = []
-for doc in langchain_docs:
-    docs_processed += text_splitter.split_documents([doc])
-
+# Extract the 'text' values into a new list
+docs_processed = [item['text'] for item in data]
 
 llm = ChatLLM()
 ans = llm.call_llm("This is a test context")
@@ -51,24 +38,24 @@ Output:::"""
 
 import random
 
-N_GENERATIONS = 10  # We intentionally generate only 10 QA couples here for cost and time considerations
+N_GENERATIONS = 3  # We intentionally generate only 10 QA couples here for cost and time considerations
 
 print(f"Generating {N_GENERATIONS} QA couples...")
 
 outputs = []
 for sampled_context in tqdm(random.sample(docs_processed, N_GENERATIONS)):
     # Generate QA couple
-    output_QA_couple = llm.call_llm(QA_generation_prompt.format(context=sampled_context.page_content))
+    output_QA_couple = llm.call_llm(QA_generation_prompt.format(context=sampled_context))
     try:
         question = output_QA_couple.split("Factoid question: ")[-1].split("Answer: ")[0]
         answer = output_QA_couple.split("Answer: ")[-1]
         assert len(answer) < 300, "Answer is too long"
         outputs.append(
             {
-                "context": sampled_context.page_content,
+                "context": sampled_context,
                 "question": question,
                 "answer": answer,
-                "source_doc": sampled_context.metadata["source"],
+                # "source_doc": sampled_context.metadata["source"],
             }
         )
     except:
@@ -203,3 +190,4 @@ display(
 )
 
 eval_dataset = datasets.Dataset.from_pandas(generated_questions, split="train", preserve_index=False)
+eval_dataset.to_csv('data/eval_dataset.csv', index=False)
