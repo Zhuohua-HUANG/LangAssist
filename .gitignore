@@ -1,3 +1,5 @@
 APIKEY
 .idea
-/vectorstore/
+.DS_Store
+__pycache__/
+vectorstore/
