@@ -14,16 +14,31 @@ with open(filename, "r") as file:
     data = json.load(file)
 
 # Extract the 'text' values into a new list
-docs_processed = [item["text"] for item in data]
+docs_processed = []
+SAMPLE_SIZE = 10
+
+i = 0
+while i < len(data):
+    current_ctx = []
+    while len(current_ctx) < 5 and i < len(data):
+        item = data[i]
+        current_ctx.append(item["text"])
+        i += 1
+    docs_processed.append(",\n".join(current_ctx))
+
 
 llm = ChatLLM()
-ans = llm.call_llm("This is a test context")
 
 QA_generation_prompt = """
 Your task is to write a factoid question and an answer given a context.
 Your factoid question should be answerable with a specific, concise piece of factual information from the context.
 Your factoid question should be formulated in the same style as questions users could ask in a search engine.
 This means that your factoid question MUST NOT mention something like "according to the passage" or "context".
+
+I will give you some good examples when given contexts about AI or IT:
+1. "what courses I can choose if i am majoring in Artificial Intelligence?"
+2. "I am majoring in Information Technology and I want to know some knowledge about database, what courses can I take?"
+3. "What can I learn from courses of Information Technology?"
 
 Provide your answer as follows:
 
@@ -38,7 +53,7 @@ Output:::"""
 
 import random
 
-N_GENERATIONS = 3  # We intentionally generate only 10 QA couples here for cost and time considerations
+N_GENERATIONS = 15  # We intentionally generate only 10 QA couples here for cost and time considerations
 
 print(f"Generating {N_GENERATIONS} QA couples...")
 
@@ -51,16 +66,17 @@ for sampled_context in tqdm(random.sample(docs_processed, N_GENERATIONS)):
     try:
         question = output_QA_couple.split("Factoid question: ")[-1].split("Answer: ")[0]
         answer = output_QA_couple.split("Answer: ")[-1]
-        assert len(answer) < 300, "Answer is too long"
-        outputs.append(
-            {
-                "context": sampled_context,
-                "question": question,
-                "answer": answer,
-                # "source_doc": sampled_context.metadata["source"],
-            }
-        )
+        # assert len(answer) < 300, "Answer is too long"
+        output = {
+            "context": sampled_context,
+            "question": question,
+            "answer": answer,
+            # "source_doc": sampled_context.metadata["source"],
+        }
+        print("output:", output)
+        outputs.append(output)
     except:
+        print("Fail to parse, skip", output_QA_couple)
         continue
 
 
@@ -88,29 +104,12 @@ Answer::: """
 
 question_relevance_critique_prompt = """
 You will be given a question.
-Your task is to provide a 'total rating' representing how useful this question can be to students learning about the information of courses they concern.
+Your task is to provide a 'total rating' representing how useful this question can be to students learning about the information of potential courses they may care.
 Give your answer on a scale of 1 to 5, where 1 means that the question is not useful at all, and 5 means that the question is extremely useful.
 
-Provide your answer as follows:
-
-Answer:::
-Evaluation: (your rationale for the rating, as a text)
-Total rating: (your rating, as a number between 1 and 5)
-
-You MUST provide values for 'Evaluation:' and 'Total rating:' in your answer.
-
-Now here is the question.
-
-Question: {question}\n
-Answer::: """
-
-question_standalone_critique_prompt = """
-You will be given a question.
-Your task is to provide a 'total rating' representing how context-independant this question is.
-Give your answer on a scale of 1 to 5, where 1 means that the question depends on additional information to be understood, and 5 means that the question makes sense by itself.
-For instance, if the question refers to a particular setting, like 'in the context' or 'in the document', the rating must be 1.
-
-For instance, "How many hours of training are required for the "Career Development for Information Hub Students" course?" should receive a 1, since LLM must get the answer from the context, thus the question is independant from the context.
+I will give you some good sample questions that should obtain 5:
+1. "what courses I can choose if i am majoring in Artificial Intelligence?"
+2. "I am majoring in Information Technology and I want to know some knowledge about database, what courses can I take?"
 
 Provide your answer as follows:
 
@@ -124,6 +123,7 @@ Now here is the question.
 
 Question: {question}\n
 Answer::: """
+
 
 print("Generating critique for each QA couple...")
 
@@ -136,9 +136,6 @@ for output in tqdm(outputs):
         ),
         "relevance": llm.call_llm(
             question_relevance_critique_prompt.format(question=output["question"]),
-        ),
-        "standalone": llm.call_llm(
-            question_standalone_critique_prompt.format(question=output["question"]),
         ),
     }
     try:
@@ -169,15 +166,15 @@ display(
             "answer",
             "groundedness_score",
             "relevance_score",
-            "standalone_score",
         ]
     ]
 )
-# generated_questions = generated_questions.loc[
-#     (generated_questions["groundedness_score"] >= 4)
-#     & (generated_questions["relevance_score"] >= 4)
-#     & (generated_questions["standalone_score"] >= 4)
-# ]
+
+generated_questions = generated_questions.loc[
+    (generated_questions["groundedness_score"] >= 4)
+    & (generated_questions["relevance_score"] >= 4)
+]
+
 print("============================================")
 print("Final evaluation dataset:")
 display(
@@ -187,13 +184,20 @@ display(
             "answer",
             "groundedness_score",
             "relevance_score",
-            "standalone_score",
         ]
     ]
 )
 
 eval_dataset = datasets.Dataset.from_pandas(
-    generated_questions[["question", "answer"]], preserve_index=False
+    generated_questions[
+        [
+            "question",
+            "answer",
+            "groundedness_score",
+            "relevance_score",
+        ]
+    ],
+    preserve_index=False,
 )
 
 eval_dataset.to_csv("data/eval_dataset.csv", index=False)

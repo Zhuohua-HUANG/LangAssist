@@ -3,3 +3,4 @@ APIKEY
 .DS_Store
 __pycache__/
 vectorstore/
+nlp_proj/

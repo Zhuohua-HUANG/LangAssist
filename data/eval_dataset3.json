@@ -1,0 +1,170 @@
+[
+  {
+    "question": "What topics are covered in the MATH 5460 Time Series Analysis course?\n",
+    "answer": "Autocorrelation, partial ACF, Box and Jerkins ARIMA modeling, spectrum and periodogram, order selection, diagnostic and forecasting.",
+    "groundedness_score": 5,
+    "relevance_score": 5
+  },
+  {
+    "question": "What skills will students gain from the \"Design and Optimization of Energy Systems\" course in the Sustainable Energy and Environment major?\n",
+    "answer": "Students will learn mathematical modeling and response analysis methods of energy systems, linear process control theories, real-time optimization and model predictive control methods for multi-objective energy system design, and how to design optimized control algorithms for the energy systems of distributed drive electric vehicles.",
+    "groundedness_score": 5,
+    "relevance_score": 5
+  },
+  {
+    "question": "What skills can students expect to learn from the \"Environmental Engineering Seminar\" course?\n",
+    "answer": "Students can expect to learn a comprehensive set of discipline-specific professional skills and knowledge for personal growth and career development, describe new developments in their field, and explain their career choice in academic and non-academic fields.",
+    "groundedness_score": 5,
+    "relevance_score": 5
+  },
+  {
+    "question": "What skills will I develop from the \"Global Carbon Cycle and Climate Change\" course in Earth, Ocean and Atmospheric Sciences?\n",
+    "answer": "You will develop interdisciplinary concepts and knowledge in the global carbon cycle and its role in regulating Earth\u2019s climate, foundational knowledge of carbon and other essential biogeochemical cycles, an understanding of how these cycles respond to global changes and human activities, appreciation for the latest research and techniques in achieving carbon neutrality, and fundamental analytical skills useful in natural sciences.",
+    "groundedness_score": 5,
+    "relevance_score": 5
+  },
+  {
+    "question": "What skills will I learn in the \"Advanced Numerical Methods in Engineering\" course?\n",
+    "answer": "Recognize fundamental mathematics and algorithms of numerical methods, apply MATLAB programming for numerical methods, describe the history and evolution of mechanical engineering technologies, and formulate mechanical engineering problems for numerical solutions.",
+    "groundedness_score": 5,
+    "relevance_score": 5
+  },
+  {
+    "question": "What skills will I develop in the \"Research Methods in Public Policy\" course in Social Science?\n",
+    "answer": "You will develop skills in the design of empirical research used in the analysis of policy problems, apply various research designs in conducting rigorous policy research, and critically evaluate policy research products.",
+    "groundedness_score": 5,
+    "relevance_score": 5
+  },
+  {
+    "question": "What are the learning outcomes for the \"Special Topics in Operations Management\" course in Information Systems, Business Statistics and Operations Management?\n",
+    "answer": "On successful completion of the course, students will be able to: 1. Demonstrate a sound grasp of the literature in operations management. 2. Apply their specialized knowledge to solve related business problems in an innovative fashion. 3. Demonstrate a broad based knowledge of core business functions. 4. Integrate functional knowledge to solve business problems related to operations management. 5. Present their discipline knowledge clearly to layman.",
+    "groundedness_score": 5,
+    "relevance_score": 5
+  },
+  {
+    "question": "What topics are covered in the DBAP 5520 Information Systems Theories course?\n",
+    "answer": "Technology adoption, knowledge management, crowdsourcing, crowdfunding, digital platforms, electronic commerce, user-generated content, social media analytics, information privacy, IT security.",
+    "groundedness_score": 5,
+    "relevance_score": 5
+  },
+  {
+    "question": "What are the key outcomes of the \"Managing Emerging Technologies\" course in the HKUST Executive MBA Program?\n",
+    "answer": "The key outcomes include describing the technological foundation of blockchain and smart contracts, comparing cryptocurrency with fiat currency and physical commodity, contrasting different types of blockchains and their applications, explaining big data and business analytics applications, understanding different analytic techniques, identifying factors that facilitate the emergence of fintech, and comparing fintech strategies and applications.",
+    "groundedness_score": 5,
+    "relevance_score": 4
+  },
+  {
+    "question": "What are the learning outcomes of the \"Advanced Aircraft Structures\" course in Aeronautical Engineering?\n",
+    "answer": "The learning outcomes include applying fundamental equations of elasticity to aircraft loading situations, using various deformation theories and fatigue analyses for analytical solutions in aircraft structural deformation, specifying materials used in aircraft structures and identifying their failure modes, and applying basic principles of stressed-skin aircraft construction.",
+    "groundedness_score": 5,
+    "relevance_score": 5
+  },
+  {
+    "question": "What skills will students gain from the \"Design and Optimization of Energy Systems\" course in the Sustainable Energy and Environment major?\n",
+    "answer": "Students will learn mathematical modeling and response analysis methods of energy systems, linear process control theories, real-time optimization and model predictive control methods for multi-objective energy system design, design optimized control algorithms for the energy systems of distributed drive electric vehicles, and apply control and optimization techniques in new scientific problems.",
+    "groundedness_score": 5,
+    "relevance_score": 5
+  },
+  {
+    "question": "What are the learning outcomes of the \"Advanced Computer Architecture\" course in Electronic and Computer Engineering?\n",
+    "answer": "On successful completion of the course, students will be able to: 1. Explain the processor design and the collaboration between software and hardware. 2. Evaluate and analyze the performance of a computer system. 3. Develop the simple improvement of a computer architecture design. 4. Optimize the performance of program running on the commercial computer systems.",
+    "groundedness_score": 5,
+    "relevance_score": 5
+  },
+  {
+    "question": "What skills will I develop from the \"Embedded System Design\" course in Microelectronics?\n",
+    "answer": "You will obtain a holistic view of embedded system design, describe interactions between different components in embedded systems, apply common modeling approaches, understand different techniques in embedded system design, and evaluate design choices on performance, cost, and power consumption.",
+    "groundedness_score": 5,
+    "relevance_score": 5
+  },
+  {
+    "question": "What skills are developed in the OCES 7990 Doctoral Thesis Research course for Ocean Science students?\n",
+    "answer": "Skills developed include understanding fundamentals of ocean science, developing scientific hypotheses, research methodology, executing data collection and analysis, solving complex scientific questions, communicating research results, and making significant contributions to the advancement of a subfield of ocean science.",
+    "groundedness_score": 5,
+    "relevance_score": 5
+  },
+  {
+    "question": "What are the key outcomes of taking the \"Advanced Phonetics and Phonology of the Chinese Language\" course?\n",
+    "answer": "The key outcomes include understanding fundamental concepts in phonetics and phonology, and explaining speech sounds (consonants, vowels, and tones) of the Chinese language to L2 learners.",
+    "groundedness_score": 5,
+    "relevance_score": 5
+  },
+  {
+    "question": "What skills will I learn in the EESM 5060 Embedded Systems course?\n",
+    "answer": "In the EESM 5060 Embedded Systems course, you will learn to recognize and define basic software and hardware components of an embedded system, analyze, design, and debug simple software and hardware components used in embedded systems, and work effectively in a team environment demonstrating project and time management skills.",
+    "groundedness_score": 5,
+    "relevance_score": 5
+  },
+  {
+    "question": "What skills will students improve by completing the course \"International Law and China\"?\n",
+    "answer": "Leadership and teamwork skills, English communication and writing skills.",
+    "groundedness_score": 5,
+    "relevance_score": 5
+  },
+  {
+    "question": "What are the learning outcomes of the \"Finite Element Methods\" course in Civil and Environmental Engineering?\n",
+    "answer": "The learning outcomes of the \"Finite Element Methods\" course include comprehending the fundamental theory and assumptions of the Finite Element Method (FEM), formulating the governing FE equations for systems governed by partial differential equations, identifying and using basic finite elements for structural engineering and heat transfer applications, applying the finite element method to realistic engineering problems using a commercial general-purpose finite element code, and developing a basic understanding of the limitations of the FEM and identifying possible error sources in its use.",
+    "groundedness_score": 5,
+    "relevance_score": 5
+  },
+  {
+    "question": "What topics are covered in the MATH 5460 Time Series Analysis course?\n",
+    "answer": "Autocorrelation, partial ACF, Box and Jerkins ARIMA modeling, spectrum and periodogram, order selection, diagnostic and forecasting.",
+    "groundedness_score": 5,
+    "relevance_score": 5
+  },
+  {
+    "question": "What skills will students gain from the \"Design and Optimization of Energy Systems\" course in the Sustainable Energy and Environment major?\n",
+    "answer": "Students will learn mathematical modeling and response analysis methods of energy systems, linear process control theories, real-time optimization and model predictive control methods for multi-objective energy system design, and how to design optimized control algorithms for the energy systems of distributed drive electric vehicles.",
+    "groundedness_score": 5,
+    "relevance_score": 5
+  },
+  {
+    "question": "What skills can students expect to learn from the \"Environmental Engineering Seminar\" course?\n",
+    "answer": "Students can expect to learn a comprehensive set of discipline-specific professional skills and knowledge for personal growth and career development, describe new developments in their field, and explain their career choice in academic and non-academic fields.",
+    "groundedness_score": 5,
+    "relevance_score": 5
+  },
+  {
+    "question": "What software programs are taught for slope stability analysis in the Civil Infrastructural Engineering and Management course?\n",
+    "answer": "SLOPE\/W & SEEP\/W and PLAXIS 2D.",
+    "groundedness_score": 5,
+    "relevance_score": 5
+  },
+  {
+    "question": "What are the learning outcomes of the \"Advanced Digital Design\" course in Information Technology?\n",
+    "answer": "On successful completion of the course, students will be able to: 1. Describe the fundamentals of digital design algorithms. 2. Implement digital design algorithms for a variety of applications: video games, movies, CAD, etc. 3. Identify different requirements of different applications. 4. Describe the basics of real-time rendering and graphics hardware. 5. Describe the basics of neural rendering. 6. Use C++, OpenGL programming, and game engine to build 3D applications.",
+    "groundedness_score": 5,
+    "relevance_score": 5
+  },
+  {
+    "question": "What skills will I learn in the \"Topology Optimization and Additive Manufacturing\" course in Mechanical Engineering?\n",
+    "answer": "You will learn fundamental mathematics and algorithms for topology optimization methods, basic MATLAB programming for numerical methods, the history and evolution of mechanical engineering technologies, and how to formulate mechanical engineering problems for solution by design optimization methods.",
+    "groundedness_score": 5,
+    "relevance_score": 5
+  },
+  {
+    "question": "What skills will I learn in the \"Mathematical Analysis and Its Applications I\" course as a Mathematics for Educators major?\n",
+    "answer": "You will learn to analyze if a set is countable or uncountable, construct bijections between sets, analyze the cardinality of the Cantor set, determine if a function is a metric or a norm, analyze convergence in metric or norm spaces, apply the Baire Category Theorem, analyze subsets of metric spaces for properties like openness or compactness, determine continuity and uniform continuity of mappings, and apply fixed point theorem in differential equations.",
+    "groundedness_score": 5,
+    "relevance_score": 5
+  },
+  {
+    "question": "What skills will students gain from the \"Scientific Computation\" course in the Mathematics for Educators major?\n",
+    "answer": "Students will be able to apply theoretical knowledge to physical problems, recognize the role of mathematics in scientific computation, implement numerical algorithms on computers for real-life problems, and present numerical output systematically.",
+    "groundedness_score": 5,
+    "relevance_score": 5
+  },
+  {
+    "question": "What are the learning outcomes of the \"Machine Learning on Graphs\" course in Artificial Intelligence?\n",
+    "answer": "The learning outcomes of the \"Machine Learning on Graphs\" course include demonstrating advanced knowledge of machine learning on graphs, understanding modern research topics and applications of graph learning methods, recognizing the limitations of current methods and making improvements, and applying programming and data analytic skills.",
+    "groundedness_score": 5,
+    "relevance_score": 5
+  },
+  {
+    "question":"I am a prospective student and I want to learn a programme related to computer science. Can you compare the courses and differences between information technology and big data technology?",
+    "answer":"The Information Technology (IT) courses, such as \"Introduction to Big Data\" (CSIT 5800) and \"Advanced Cloud Computing\" (CSIT 5970), focus on providing a broad understanding of Big Data, its impact on society, and the fundamentals of cloud computing, including architecture and programming models. On the other hand, Big Data Technology courses, like \"Big Data Computing\" (MSBD 5003) and \"Foundations of Data Analytics\" (MSBD 5001), delve into specific technologies and frameworks such as Hadoop and Spark for managing and mining massive data sets, and foundational techniques for data analytics. While IT courses offer a wider scope on technology's role in society and basic technical skills, Big Data Technology courses are more focused on the technical aspects and applications of data analytics and management. ",
+    "groundedness_score": 4,
+    "relevance_score":5
+  }
+]
